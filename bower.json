@@ -1,0 +1,15 @@
+{
+	"name": "Test hub",
+	"version": "0.1.0",
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components"
+	],
+  "private": true,
+	"dependencies": {
+		"jquery": ">= 1.9.0",
+		"components-font-awesome": "*",
+		"bootstrap": ">= 3.2.0"
+	}
+}

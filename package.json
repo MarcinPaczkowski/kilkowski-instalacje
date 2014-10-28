@@ -1,0 +1,20 @@
+{
+	"name": "Instalacja-Kilkowski",
+	"version": "0.1.0",
+	"homepage": "http://www.invalid_addres.com",
+	"description": "Instalacja-Kilkowski Hub",
+	"author": "Marcin Paczkowski <pakos1337@gmail.com",
+	"link": "",
+	"private": true,
+	"devDependencies": {
+		"grunt": "~0.4.2",
+		"grunt-contrib-less": "*",
+		"grunt-contrib-uglify": "*",
+		"grunt-contrib-concat": "*",
+		"grunt-contrib-imagemin": "*",
+		"grunt-contrib-copy": "*",
+		"grunt-contrib-watch": "*",
+		"matchdep": "*"
+	},
+	"main": "Gruntfile.js"
+}
