@@ -1,0 +1,47 @@
+.services {
+	margin-top: 20px;
+	&__header {
+		margin-bottom: 50px;
+		&__title { 
+			margin: 20px auto;
+			font-size: 28px;
+			text-align: center;
+		}
+		&__title:after {
+			content: "";
+			display: block;
+			background-color: #222222;
+			width: 30px;
+			height: 1px;
+			margin: 10px auto 0;
+		}
+		&__description { 
+			margin: 20px auto;
+			font-size: 22px;
+			text-align: center;			
+		}
+	}
+	.list--item {
+		height: 55px;
+		margin-bottom: 15px;
+		.ico {
+			float: left;
+			margin-right: 25px;
+			width: 55px;
+			height: 55px;
+			background-color: red;
+		}
+		.category {
+			float: left;
+			.title {
+				font-size: 20px;
+				margin: 0;
+				margin-bottom: 10px;
+			}
+			.description {
+				margin: 0;
+				font-size: 16px;
+			}
+		}
+	}
+}
