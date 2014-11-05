@@ -1,0 +1,37 @@
+.gallery {
+	margin-top: 20px;
+	&__header {
+		margin-bottom: 20px;
+		&__title { 
+			margin: 0;
+			margin-top: 15px;
+			font-size: 28px;
+			text-align: center;
+		}
+		&__title:after {
+			content: "";
+			display: block;
+			background-color: #222222;
+			width: 30px;
+			height: 1px;
+			margin: 10px auto 0;
+		}
+		&__description { 
+			margin: 0;
+			margin-top: 15px;
+			font-size: 22px;
+			text-align: center;						
+		}
+	}
+	.gallery-item {
+		margin-top: 20px;
+		opacity: 0.5;
+		img {
+			margin: 0 auto;
+		}
+	}
+
+	.gallery-item:hover {
+		opacity: 1.0;
+	}
+}

@@ -7871,6 +7871,8 @@ button.close {
   -khtml-opacity: 0.9;
   opacity: 0.9;
   z-index: 9999;
+  position: fixed;
+  top: 0;
 }
 .navigation__logo {
   float: left;
@@ -7883,55 +7885,65 @@ button.close {
   margin: 0px;
   margin-right: 100px;
 }
-.navigation .menu .menu--item {
+.navigation .menu .menu-item {
   display: inline;
   line-height: 80px;
   margin-right: 10px;
   margin-left: 10px;
   font-size: 16px;
 }
-.navigation .menu .menu--item .menu--link {
+.navigation .menu .menu-item .menu-link {
   color: #A9A9A9;
 }
-.navigation .menu .menu--item .menu--link:focus {
+.navigation .menu .menu-item .menu-link:focus {
   color: #A9A9A9;
 }
-.navigation .menu .menu--item .menu--link:hover {
+.navigation .menu .menu-item .menu-link:hover {
   text-decoration: none;
   color: #2491FF;
 }
 .banner {
-  margin-top: 20px;
+  margin-top: 100px;
 }
 .about {
   margin-top: 20px;
+  padding-bottom: 20px;
+  background-color: #111111;
 }
-.about__company {
-  margin: 20px auto;
+.about__header {
+  color: #fff;
+}
+.about__header__company {
+  margin: 0;
+  margin-top: 15px;
   font-size: 28px;
   text-align: center;
 }
-.about__additional {
-  margin: 20px 140px;
+.about__header__additional {
+  margin: 0;
+  margin-top: 15px;
+  margin-left: 140px;
+  margin-right: 140px;
   font-size: 20px;
   text-align: center;
   line-height: 25px;
+  color: #888888;
 }
-.about__additional:after {
+.about__header__additional:after {
   content: "";
   display: block;
-  background-color: #222222;
+  background-color: #888888;
   width: 30px;
   height: 1px;
   margin: 10px auto 0;
 }
-.about__description {
+.about__header__description {
+  margin: 0;
+  margin-top: 15px;
   font-size: 16px;
   text-align: justify;
   line-height: 25px;
-}
-.about__banner {
-  margin: 20px auto;
+  color: #666;
 }
 .services {
   margin-top: 20px;
@@ -7940,7 +7952,8 @@ button.close {
   margin-bottom: 50px;
 }
 .services__header__title {
-  margin: 20px auto;
+  margin: 0;
+  margin-top: 15px;
   font-size: 28px;
   text-align: center;
 }
@@ -7953,39 +7966,217 @@ button.close {
   margin: 10px auto 0;
 }
 .services__header__description {
-  margin: 20px auto;
+  margin: 0;
+  margin-top: 15px;
   font-size: 22px;
   text-align: center;
 }
-.services .list--item {
+.services .list-item {
   height: 55px;
   margin-bottom: 15px;
 }
-.services .list--item .ico {
+.services .list-item .ico {
   float: left;
-  margin-right: 25px;
-  width: 55px;
-  height: 55px;
-  background-color: red;
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+  background-image: url("../images/circle5.png");
+  background-position-y: 3px;
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
 }
-.services .list--item .category {
+.services .list-item .category {
   float: left;
 }
-.services .list--item .category .title {
+.services .list-item .category .title {
   font-size: 20px;
   margin: 0;
   margin-bottom: 10px;
 }
-.services .list--item .category .description {
+.services .list-item .category .description {
   margin: 0;
   font-size: 16px;
 }
 .slider {
   margin-top: 20px;
 }
-.slider .slider__background {
+.gallery {
+  margin-top: 20px;
+}
+.gallery__header {
+  margin-bottom: 20px;
+}
+.gallery__header__title {
+  margin: 0;
+  margin-top: 15px;
+  font-size: 28px;
+  text-align: center;
+}
+.gallery__header__title:after {
+  content: "";
+  display: block;
+  background-color: #222222;
+  width: 30px;
+  height: 1px;
+  margin: 10px auto 0;
+}
+.gallery__header__description {
+  margin: 0;
+  margin-top: 15px;
+  font-size: 22px;
+  text-align: center;
+}
+.gallery .gallery-item {
+  margin-top: 20px;
+  opacity: 0.5;
+}
+.gallery .gallery-item img {
+  margin: 0 auto;
+}
+.gallery .gallery-item:hover {
+  opacity: 1.0;
+}
+.offer {
+  margin-top: 20px;
+  padding-bottom: 20px;
+  background-color: #111111;
+}
+.offer__header {
+  color: #ffffff;
+  margin-bottom: 25px;
+}
+.offer__header__title {
+  margin: 0;
+  margin-top: 15px;
+  font-size: 28px;
+  text-align: center;
+}
+.offer__header__title:after {
+  content: "";
+  display: block;
+  background-color: #ffffff;
+  width: 30px;
+  height: 1px;
+  margin: 10px auto 0;
+}
+.offer__header__description {
+  margin: 0;
+  margin-top: 15px;
+  font-size: 22px;
+  text-align: center;
+  color: #888888;
+}
+.offer__get {
+  text-align: center;
+}
+.offer__get .ico {
+  padding-bottom: 10px;
+  color: #666666;
+}
+.offer__get .ico .fa {
+  font-size: 70px;
+}
+.offer__get .btn {
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: #75a3c9;
+  border-color: #75a3c9;
+}
+.offer__get .btn:hover {
+  background-color: #333;
+  border-color: #333;
+}
+.trustUs {
+  margin-top: 20px;
+}
+.trustUs__header {
+  margin-bottom: 30px;
+}
+.trustUs__header__title {
+  margin: 0;
+  margin-top: 15px;
+  font-size: 28px;
+  text-align: center;
+}
+.trustUs__header__title:after {
+  content: "";
+  display: block;
+  background-color: #222222;
+  width: 30px;
+  height: 1px;
+  margin: 10px auto 0;
+}
+.trustUs__header__description {
+  margin: 0;
+  margin-top: 15px;
+  font-size: 22px;
+  text-align: center;
+}
+.trustUs .companyIco {
   width: 100%;
-  height: 400px;
+  height: 75px;
+  background-image: url("http://lorempixel.com/150/75/");
+  background-repeat: no-repeat;
+  display: block;
+  margin-bottom: 20px;
+}
+.trustUs .companyIco:hover {
+  opacity: 0.7;
+}
+h1,
+h2,
+h3 {
+  margin: 0;
+  margin-top: 20px;
+}
+.contact {
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #111111;
+}
+.contact__form__date {
+  text-align: center;
+  color: #888888;
+}
+.contact__form__date .company {
+  font-size: 24px;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+.contact__form__date .phone {
+  font-size: 22px;
+}
+.contact__form__date .mail {
+  font-size: 20px;
+}
+.contact__form__date .mail a:hover {
+  text-decoration: none;
+}
+.contact__form__date .address {
+  font-size: 22px;
+}
+.contact__form__date .writeToUs {
+  font-size: 30px;
+  color: #ffffff;
+}
+.contact__form .formToContact {
+  padding: 0 30px;
+}
+.contact__form .formToContact .singleInput label {
+  width: 100%;
+  color: #dddddd;
+}
+.contact__form .formToContact .singleInput input {
+  width: 100%;
+  background-color: #333333;
+  color: #dddddd;
+  border: none;
+  padding: 8px;
+}
+.contact__form .formToContact .singleInput input:focus {
+  border: none;
+  outline: none;
 }
 /*
  | ---------------------------------------------------

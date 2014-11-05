@@ -17,21 +17,22 @@
             <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
         <![endif]-->
     </head>
-    <body style="height: 100000px">
+    <body>
         <section class="stickyNavigation">
             <nav class="navigation"> 
                 <div class="navigation__logo">
-                    <img src="http://dummyimage.com/300x80/bab4ba/000000.png&text=Kilkowski+instalacje" alt="Kilkowski instalacje logo" />
+                    <a href="#">
+                        <img src="http://dummyimage.com/300x80/bab4ba/000000.png&text=Kilkowski+instalacje" class="img-responsive" alt="Kilkowski instalacje logo" />
+                    </a>
                 </div>
                 <div class="navigation__menu">
                     <ul class="menu">
-                        <li class="menu--item"><a class="menu--link" href="#">O nas</a></li>
-                        <li class="menu--item"><a class="menu--link" href="#">Usługi</a></li>
-                        <li class="menu--item"><a class="menu--link" href="#">Sprzęt</a></li>
-                        <li class="menu--item"><a class="menu--link" href="#">Portfolio</a></li>
-                        <li class="menu--item"><a class="menu--link" href="#">Oferta</a></li>
-                        <li class="menu--item"><a class="menu--link" href="#">Zaufali nam</a></li>
-                        <li class="menu--item"><a class="menu--link" href="#">Kontakt</a></li>
+                        <li class="menu-item"><a class="menu-link" href="#about">O nas</a></li>
+                        <li class="menu-item"><a class="menu-link" href="#services">Usługi</a></li>
+                        <li class="menu-item"><a class="menu-link" href="#gallery">Galeria</a></li>
+                        <li class="menu-item"><a class="menu-link" href="#offer">Oferta</a></li>
+                        <li class="menu-item"><a class="menu-link" href="#trustUs">Zaufali nam</a></li>
+                        <li class="menu-item"><a class="menu-link" href="#contact">Kontakt</a></li>
                     </ul>
                 </div>      
             </nav>
@@ -41,32 +42,47 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <img src="http://lorempixel.com/1140/499/" alt="banner">
+                        <img src="http://lorempixel.com/1140/250/" class="img-responsive" alt="banner">
                     </div>
                 </div>
             </div>
         </section>
 
         <section class="about">
+            <a name="about"></a>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="about__company">Kilkowski instalacje</h1>
-                        <h2 class="about__additional">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque, dignissimos!
-                        </h2>
-                        <p class="about__description">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae fugiat, laboriosam consequuntur delectus, temporibus quibusdam dolore velit, iste odio aspernatur nobis vero incidunt mollitia porro obcaecati doloribus eos veritatis laborum distinctio earum eius esse animi perspiciatis. Enim molestiae praesentium laudantium obcaecati tenetur! Dolores, iste hic id possimus suscipit corporis illum reiciendis harum! Esse, voluptate cupiditate architecto fugit! Saepe rem in, doloribus quod harum corporis similique accusamus atque laudantium modi aperiam nihil quaerat laboriosam asperiores, eaque, tempora natus dolorem velit ipsa facilis vitae nisi, sit hic. Consequuntur eligendi non necessitatibus architecto eaque nesciunt ad fugiat vero, maxime ducimus, soluta aspernatur, perspiciatis?
-                        </p>
-                        <div class="about__banner">
-                            <img src="http://lorempixel.com/1140/501/" alt="banner">
-                        </div>                        
+                        <header class="about__header">
+                            <h1 class="about__header__company">Kilkowski instalacje</h1>
+                            <h2 class="about__header__additional">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque, dignissimos!
+                            </h2>
+                            <p class="about__header__description">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae fugiat, laboriosam consequuntur delectus, temporibus quibusdam dolore velit, iste odio aspernatur nobis vero incidunt mollitia porro obcaecati doloribus eos veritatis laborum distinctio earum eius esse animi perspiciatis. Enim molestiae praesentium laudantium obcaecati tenetur! Dolores, iste hic id possimus suscipit corporis illum reiciendis harum! Esse, voluptate cupiditate architecto fugit! Saepe rem in, doloribus quod harum corporis similique accusamus atque laudantium modi aperiam nihil quaerat laboriosam asperiores, eaque, tempora natus dolorem velit ipsa facilis vitae nisi, sit hic. Consequuntur eligendi non necessitatibus architecto eaque nesciunt ad fugiat vero, maxime ducimus, soluta aspernatur, perspiciatis?
+                            </p> 
+                        </header>                                              
                     </div>                    
                 </div>
             </div>
         </section>
 
+        <section class="slider" name="slider">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="owl-mySlider" class="owl-carousel owl-theme"> 
+                            <div class="item"><img src="http://lorempixel.com/1140/500/" class="img-responsive" alt="slajder"></div>
+                            <div class="item"><img src="http://lorempixel.com/1140/500/" class="img-responsive" alt="slajder"></div>
+                            <div class="item"><img src="http://lorempixel.com/1140/500/" class="img-responsive" alt="slajder"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> 
+
         <section class="services">
+            <a name="services"></a>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -81,12 +97,12 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="services__banner">
-                            <img src="http://lorempixel.com/550/410/" alt="banner">
+                            <img src="http://lorempixel.com/550/410/" class="img-responsive" alt="banner">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="services__list">
-                            <div class="list--item">
+                            <div class="list-item">
                                 <span class="ico"></span>
                                 <header class="category">
                                     <h3 class="title">Lorem ipsum.</h3>
@@ -94,7 +110,7 @@
                                 </header>
                             </div>
 
-                            <div class="list--item">
+                            <div class="list-item">
                                 <span class="ico"></span>
                                 <header class="category">
                                     <h3 class="title">Lorem ipsum.</h3>
@@ -102,7 +118,7 @@
                                 </header>
                             </div>
 
-                            <div class="list--item">
+                            <div class="list-item">
                                 <span class="ico"></span>
                                 <header class="category">
                                     <h3 class="title">Lorem ipsum.</h3>
@@ -110,7 +126,7 @@
                                 </header>
                             </div>
 
-                            <div class="list--item">
+                            <div class="list-item">
                                 <span class="ico"></span>
                                 <header class="category">
                                     <h3 class="title">Lorem ipsum.</h3>
@@ -118,7 +134,7 @@
                                 </header>
                             </div>
 
-                            <div class="list--item">
+                            <div class="list-item">
                                 <span class="ico"></span>
                                 <header class="category">
                                     <h3 class="title">Lorem ipsum.</h3>
@@ -126,7 +142,7 @@
                                 </header>
                             </div>
 
-                            <div class="list--item">
+                            <div class="list-item">
                                 <span class="ico"></span>
                                 <header class="category">
                                     <h3 class="title">Lorem ipsum.</h3>
@@ -139,26 +155,213 @@
             </div>
         </section>
 
-        <section class="slider">
+        <section class="gallery">
+            <a name="gallery"></a>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="slider__background">
-                            <div id="owl-mySlider" class="owl-carousel owl-theme"> 
-                                <div class="item"><img src="http://lorempixel.com/1140/500/" alt="slajder"></div>
-                                <div class="item"><img src="http://lorempixel.com/1140/500/" alt="slajder"></div>
-                                <div class="item"><img src="http://lorempixel.com/1140/500/" alt="slajder"></div> 
+                        <header class="gallery__header">
+                            <h1 class="gallery__header__title">Galeria</h1>
+                            <h2 class="gallery__header__description">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis saepe reiciendis, totam laborum ducimus quo.
+                            </h2>
+                        </header>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="gallery-item">
+                            <img src="http://lorempixel.com/550/410/" class="img-responsive" alt="galeria zdjec" />
+                        </div>                        
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="gallery-item">
+                            <img src="http://lorempixel.com/550/410/" class="img-responsive" alt="galeria zdjec" />
+                        </div> 
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="gallery-item">
+                            <img src="http://lorempixel.com/550/410/" class="img-responsive" alt="galeria zdjec" />
+                        </div> 
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="gallery-item">
+                            <img src="http://lorempixel.com/550/410/" class="img-responsive" alt="galeria zdjec" />
+                        </div> 
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="gallery-item">
+                            <img src="http://lorempixel.com/550/410/" class="img-responsive" alt="galeria zdjec" />
+                        </div> 
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="gallery-item">
+                            <img src="http://lorempixel.com/550/410/" class="img-responsive" alt="galeria zdjec" />
+                        </div> 
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="gallery-item">
+                            <img src="http://lorempixel.com/550/410/" class="img-responsive" alt="galeria zdjec" />
+                        </div> 
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="gallery-item">
+                            <img src="http://lorempixel.com/550/410/" class="img-responsive" alt="galeria zdjec" />
+                        </div>                     
+                    </div>
+                </div>                
+            </div>
+        </section>
+
+        <section class="offer">
+            <a name="offer"></a>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <header class="offer__header">
+                            <h1 class="offer__header__title">Oferta</h1>
+                            <h2 class="offer__header__description">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis saepe reiciendis, totam laborum ducimus quo.
+                            </h2>
+                        </header>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="offer__get">
+                            <div class="ico">
+                                <span class="fa fa-file-pdf-o fa-4"></span>
                             </div>
+                            
+                            <div class="button">
+                                <a href="#" class="btn btn-info btn-large">
+                                    <i class="icon-white icon-file"></i> 
+                                    Pobierz ofertę
+                                </a>
+                            </div>                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="trustUs">
+            <a name="trustUs"></a>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <header class="trustUs__header">
+                            <h1 class="trustUs__header__title">Zaufali nam</h1>
+                            <h2 class="trustUs__header__description">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis saepe reiciendis, totam laborum ducimus quo.
+                            </h2>
+                        </header>
+                    </div>                    
+                </div>
+                <div class="row">
+                    <div class="col-md-2 col-sm-3 col-xs-4">
+                        <a href="#">
+                            <span class="companyIco"></span>
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-4">
+                        <a href="#">
+                            <span class="companyIco"></span>
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-4">
+                        <a href="#">
+                            <span class="companyIco"></span>
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-4">
+                        <a href="#">
+                            <span class="companyIco"></span>
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-4">
+                        <a href="#">
+                            <span class="companyIco"></span>
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-4">
+                        <a href="#">
+                            <span class="companyIco"></span>
+                        </a>
+                    </div>
+
+                    <div class="col-md-2 col-sm-3 col-xs-4">
+                        <a href="#">
+                            <span class="companyIco"></span>
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-4">
+                        <a href="#">
+                            <span class="companyIco"></span>
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-4">
+                        <a href="#">
+                            <span class="companyIco"></span>
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-4">
+                        <a href="#">
+                            <span class="companyIco"></span>
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-4">
+                        <a href="#">
+                            <span class="companyIco"></span>
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-4">
+                        <a href="#">
+                            <span class="companyIco"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="contact">
+            <a name="contact"></a>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="contact__form">
+                            <div class="contact__form__date">
+                                <h1 class="company">NAZWA FIRMY</h1>
+                                <h2 class="phone">+48 666 666 666</h2>
+                                <h3 class="mail"><a href="">mojMail@mail.pl</a></h3>
+                                <h2 class="address">Mosina, ul. Uliczka 15 66-666</h2>
+                                <h1 class="writeToUs">Napisz do Nas</h1>
+                            </div>
+                            <form action="#" class="formToContact">
+                                <p class="singleInput">
+                                    <label>Imię i nazwisko/firma (wymagane)</label> 
+                                    <input type="name" name="name" placeholder="Podaj imię i nazwisko lub nazwę firmy" required autofocus>
+                                </p>
+
+                                <p class="singleInput">
+                                    <label>Adres E-mail (wymagane)</label> 
+                                    <input type="email" name="email" placeholder="Podaj adres e-mail" required>
+                                </p>
+
+                                <p class="singleInput">
+                                    <label>Numer telefonu (wymagane)</label> 
+                                    <input type="phone" name="phone" placeholder="Podaj numer telefonu kontaktowego" required>
+                                </p>
+                                
+                                <input type="submit" class="btn btn-info btn-large">
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>  
+        </section>
 
         <footer>
             <p>&copy; Marcin Paczkowski 2014</p>
         </footer>
-    </div> <!-- /container -->        
+    </div>       
         <script src="js/vendor/jquery.min.js"></script>
         <script src="js/vendor/bootstrap.min.js"></script>
         <script src="js/scripts.js"></script>
