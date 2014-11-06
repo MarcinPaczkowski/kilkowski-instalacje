@@ -2486,177 +2486,258 @@ define('ScrollScene', ['jquery', 'TweenMax', 'TimelineMax'], function ($, TweenM
 		}
 	}(window));
 
-})(this || window);;// Sticky Plugin v1.0.0 for jQuery
-// =============
-// Author: Anthony Garand
-// Improvements by German M. Bravo (Kronuz) and Ruud Kamphuis (ruudk)
-// Improvements by Leonardo C. Daronco (daronco)
-// Created: 2/14/2011
-// Date: 2/12/2012
-// Website: http://labs.anthonygarand.com/sticky
-// Description: Makes an element on the page stick on the screen as you scroll
-//       It will only set the 'top' and 'position' of your element, you
-//       might need to adjust the width in some cases.
+})(this || window);;(function($) {
+  var version = '1.5.3',
+      optionOverrides = {},
+      defaults = {
+        exclude: [],
+        excludeWithin:[],
+        offset: 0,
 
-(function($) {
-  var defaults = {
-      topSpacing: 0,
-      bottomSpacing: 0,
-      className: 'is-sticky',
-      wrapperClassName: 'sticky-wrapper',
-      center: false,
-      getWidthFrom: '',
-      responsiveWidth: false
-    },
-    $window = $(window),
-    $document = $(document),
-    sticked = [],
-    windowHeight = $window.height(),
-    scroller = function() {
-      var scrollTop = $window.scrollTop(),
-        documentHeight = $document.height(),
-        dwh = documentHeight - windowHeight,
-        extra = (scrollTop > dwh) ? dwh - scrollTop : 0;
+        // one of 'top' or 'left'
+        direction: 'top',
 
-      for (var i = 0; i < sticked.length; i++) {
-        var s = sticked[i],
-          elementTop = s.stickyWrapper.offset().top,
-          etse = elementTop - s.topSpacing - extra;
+        // jQuery set of elements you wish to scroll (for $.smoothScroll).
+        //  if null (default), $('html, body').firstScrollable() is used.
+        scrollElement: null,
 
-        if (scrollTop <= etse) {
-          if (s.currentTop !== null) {
-            s.stickyElement
-              .css('position', '')
-              .css('top', '');
-            s.stickyElement.trigger('sticky-end', [s]).parent().removeClass(s.className);
-            s.currentTop = null;
-          }
-        }
-        else {
-          var newTop = documentHeight - s.stickyElement.outerHeight()
-            - s.topSpacing - s.bottomSpacing - scrollTop - extra;
-          if (newTop < 0) {
-            newTop = newTop + s.topSpacing;
-          } else {
-            newTop = s.topSpacing;
-          }
-          if (s.currentTop != newTop) {
-            s.stickyElement
-              .css('position', 'fixed')
-              .css('top', newTop);
+        // only use if you want to override default behavior
+        scrollTarget: null,
 
-            if (typeof s.getWidthFrom !== 'undefined') {
-              s.stickyElement.css('width', $(s.getWidthFrom).width());
-            }
+        // fn(opts) function to be called before scrolling occurs.
+        // `this` is the element(s) being scrolled
+        beforeScroll: function() {},
 
-            s.stickyElement.trigger('sticky-start', [s]).parent().addClass(s.className);
-            s.currentTop = newTop;
-          }
-        }
-      }
-    },
-    resizer = function() {
-      windowHeight = $window.height();
+        // fn(opts) function to be called after scrolling occurs.
+        // `this` is the triggering element
+        afterScroll: function() {},
+        easing: 'swing',
+        speed: 400,
 
-      for (var i = 0; i < sticked.length; i++) {
-        var s = sticked[i];
-        if (typeof s.getWidthFrom !== 'undefined' && s.responsiveWidth === true) {
-          s.stickyElement.css('width', $(s.getWidthFrom).width());
-        }
-      }
-    },
-    methods = {
-      init: function(options) {
-        var o = $.extend({}, defaults, options);
-        return this.each(function() {
-          var stickyElement = $(this);
+        // coefficient for "auto" speed
+        autoCoefficient: 2,
 
-          var stickyId = stickyElement.attr('id');
-          var wrapperId = stickyId ? stickyId + '-' + defaults.wrapperClassName : defaults.wrapperClassName 
-          var wrapper = $('<div></div>')
-            .attr('id', stickyId + '-sticky-wrapper')
-            .addClass(o.wrapperClassName);
-          stickyElement.wrapAll(wrapper);
-
-          if (o.center) {
-            stickyElement.parent().css({width:stickyElement.outerWidth(),marginLeft:"auto",marginRight:"auto"});
-          }
-
-          if (stickyElement.css("float") == "right") {
-            stickyElement.css({"float":"none"}).parent().css({"float":"right"});
-          }
-
-          var stickyWrapper = stickyElement.parent();
-          stickyWrapper.css('height', stickyElement.outerHeight());
-          sticked.push({
-            topSpacing: o.topSpacing,
-            bottomSpacing: o.bottomSpacing,
-            stickyElement: stickyElement,
-            currentTop: null,
-            stickyWrapper: stickyWrapper,
-            className: o.className,
-            getWidthFrom: o.getWidthFrom,
-            responsiveWidth: o.responsiveWidth
-          });
-        });
+        // $.fn.smoothScroll only: whether to prevent the default click action
+        preventDefault: true
       },
-      update: scroller,
-      unstick: function(options) {
-        return this.each(function() {
-          var unstickyElement = $(this);
 
-          var removeIdx = -1;
-          for (var i = 0; i < sticked.length; i++)
-          {
-            if (sticked[i].stickyElement.get(0) == unstickyElement.get(0))
-            {
-                removeIdx = i;
+      getScrollable = function(opts) {
+        var scrollable = [],
+            scrolled = false,
+            dir = opts.dir && opts.dir === 'left' ? 'scrollLeft' : 'scrollTop';
+
+        this.each(function() {
+
+          if (this === document || this === window) { return; }
+          var el = $(this);
+          if ( el[dir]() > 0 ) {
+            scrollable.push(this);
+          } else {
+            // if scroll(Top|Left) === 0, nudge the element 1px and see if it moves
+            el[dir](1);
+            scrolled = el[dir]() > 0;
+            if ( scrolled ) {
+              scrollable.push(this);
             }
-          }
-          if(removeIdx != -1)
-          {
-            sticked.splice(removeIdx,1);
-            unstickyElement.unwrap();
-            unstickyElement.removeAttr('style');
+            // then put it back, of course
+            el[dir](0);
           }
         });
+
+        // If no scrollable elements, fall back to <body>,
+        // if it's in the jQuery collection
+        // (doing this because Safari sets scrollTop async,
+        // so can't set it to 1 and immediately get the value.)
+        if (!scrollable.length) {
+          this.each(function() {
+            if (this.nodeName === 'BODY') {
+              scrollable = [this];
+            }
+          });
+        }
+
+        // Use the first scrollable element if we're calling firstScrollable()
+        if ( opts.el === 'first' && scrollable.length > 1 ) {
+          scrollable = [ scrollable[0] ];
+        }
+
+        return scrollable;
+      };
+
+  $.fn.extend({
+    scrollable: function(dir) {
+      var scrl = getScrollable.call(this, {dir: dir});
+      return this.pushStack(scrl);
+    },
+    firstScrollable: function(dir) {
+      var scrl = getScrollable.call(this, {el: 'first', dir: dir});
+      return this.pushStack(scrl);
+    },
+
+    smoothScroll: function(options, extra) {
+      options = options || {};
+
+      if ( options === 'options' ) {
+        if ( !extra ) {
+          return this.first().data('ssOpts');
+        }
+        return this.each(function() {
+          var $this = $(this),
+              opts = $.extend($this.data('ssOpts') || {}, extra);
+
+          $(this).data('ssOpts', opts);
+        });
+      }
+
+      var opts = $.extend({}, $.fn.smoothScroll.defaults, options),
+          locationPath = $.smoothScroll.filterPath(location.pathname);
+
+      this
+      .unbind('click.smoothscroll')
+      .bind('click.smoothscroll', function(event) {
+        var link = this,
+            $link = $(this),
+            thisOpts = $.extend({}, opts, $link.data('ssOpts') || {}),
+            exclude = opts.exclude,
+            excludeWithin = thisOpts.excludeWithin,
+            elCounter = 0, ewlCounter = 0,
+            include = true,
+            clickOpts = {},
+            hostMatch = ((location.hostname === link.hostname) || !link.hostname),
+            pathMatch = thisOpts.scrollTarget || ( $.smoothScroll.filterPath(link.pathname) === locationPath ),
+            thisHash = escapeSelector(link.hash);
+
+        if ( !thisOpts.scrollTarget && (!hostMatch || !pathMatch || !thisHash) ) {
+          include = false;
+        } else {
+          while (include && elCounter < exclude.length) {
+            if ($link.is(escapeSelector(exclude[elCounter++]))) {
+              include = false;
+            }
+          }
+          while ( include && ewlCounter < excludeWithin.length ) {
+            if ($link.closest(excludeWithin[ewlCounter++]).length) {
+              include = false;
+            }
+          }
+        }
+
+        if ( include ) {
+
+          if ( thisOpts.preventDefault ) {
+            event.preventDefault();
+          }
+
+          $.extend( clickOpts, thisOpts, {
+            scrollTarget: thisOpts.scrollTarget || thisHash,
+            link: link
+          });
+
+          $.smoothScroll( clickOpts );
+        }
+      });
+
+      return this;
+    }
+  });
+
+  $.smoothScroll = function(options, px) {
+    if ( options === 'options' && typeof px === 'object' ) {
+      return $.extend(optionOverrides, px);
+    }
+    var opts, $scroller, scrollTargetOffset, speed, delta,
+        scrollerOffset = 0,
+        offPos = 'offset',
+        scrollDir = 'scrollTop',
+        aniProps = {},
+        aniOpts = {};
+
+    if (typeof options === 'number') {
+      opts = $.extend({link: null}, $.fn.smoothScroll.defaults, optionOverrides);
+      scrollTargetOffset = options;
+    } else {
+      opts = $.extend({link: null}, $.fn.smoothScroll.defaults, options || {}, optionOverrides);
+      if (opts.scrollElement) {
+        offPos = 'position';
+        if (opts.scrollElement.css('position') === 'static') {
+          opts.scrollElement.css('position', 'relative');
+        }
+      }
+    }
+
+    scrollDir = opts.direction === 'left' ? 'scrollLeft' : scrollDir;
+
+    if ( opts.scrollElement ) {
+      $scroller = opts.scrollElement;
+      if ( !(/^(?:HTML|BODY)$/).test($scroller[0].nodeName) ) {
+        scrollerOffset = $scroller[scrollDir]();
+      }
+    } else {
+      $scroller = $('html, body').firstScrollable(opts.direction);
+    }
+
+    // beforeScroll callback function must fire before calculating offset
+    opts.beforeScroll.call($scroller, opts);
+
+    scrollTargetOffset = (typeof options === 'number') ? options :
+                          px ||
+                          ( $(opts.scrollTarget)[offPos]() &&
+                          $(opts.scrollTarget)[offPos]()[opts.direction] ) ||
+                          0;
+
+    aniProps[scrollDir] = scrollTargetOffset + scrollerOffset + opts.offset;
+    speed = opts.speed;
+
+    // automatically calculate the speed of the scroll based on distance / coefficient
+    if (speed === 'auto') {
+
+      // $scroller.scrollTop() is position before scroll, aniProps[scrollDir] is position after
+      // When delta is greater, speed will be greater.
+      delta = aniProps[scrollDir] - $scroller.scrollTop();
+      if(delta < 0) {
+        delta *= -1;
+      }
+
+      // Divide the delta by the coefficient
+      speed = delta / opts.autoCoefficient;
+    }
+
+    aniOpts = {
+      duration: speed,
+      easing: opts.easing,
+      complete: function() {
+        opts.afterScroll.call(opts.link, opts);
       }
     };
 
-  // should be more efficient than using $window.scroll(scroller) and $window.resize(resizer):
-  if (window.addEventListener) {
-    window.addEventListener('scroll', scroller, false);
-    window.addEventListener('resize', resizer, false);
-  } else if (window.attachEvent) {
-    window.attachEvent('onscroll', scroller);
-    window.attachEvent('onresize', resizer);
+    if (opts.step) {
+      aniOpts.step = opts.step;
+    }
+
+    if ($scroller.length) {
+      $scroller.stop().animate(aniProps, aniOpts);
+    } else {
+      opts.afterScroll.call(opts.link, opts);
+    }
+  };
+
+  $.smoothScroll.version = version;
+  $.smoothScroll.filterPath = function(string) {
+    string = string || '';
+    return string
+      .replace(/^\//,'')
+      .replace(/(?:index|default).[a-zA-Z]{3,4}$/,'')
+      .replace(/\/$/,'');
+  };
+
+  // default options
+  $.fn.smoothScroll.defaults = defaults;
+
+  function escapeSelector (str) {
+    return str.replace(/(:|\.)/g,'\\$1');
   }
 
-  $.fn.sticky = function(method) {
-    if (methods[method]) {
-      return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-    } else if (typeof method === 'object' || !method ) {
-      return methods.init.apply( this, arguments );
-    } else {
-      $.error('Method ' + method + ' does not exist on jQuery.sticky');
-    }
-  };
-
-  $.fn.unstick = function(method) {
-    if (methods[method]) {
-      return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-    } else if (typeof method === 'object' || !method ) {
-      return methods.unstick.apply( this, arguments );
-    } else {
-      $.error('Method ' + method + ' does not exist on jQuery.sticky');
-    }
-
-  };
-  $(function() {
-    setTimeout(scroller, 0);
-  });
-})(jQuery);
-;/*
+})(jQuery);;/*
  *  jQuery OwlCarousel v1.3.3
  *
  *  Copyright (c) 2013 Bartosz Wojciechowski
@@ -4175,4 +4256,30 @@ if (typeof Object.create !== "function") {
 		paginationSpeed : 400,
 		singleItem: true,
 	});
+
+	//scrollTo
+	$(".navigation__logo a").click(function() {
+		var target = this.hash;
+		$.smoothScroll({
+          scrollTarget: target,
+          offset: -95
+        });
+	});
+
+	$(".navigation__menu .menu-link").click(function() {
+		var target = this.hash;
+		$.smoothScroll({
+          scrollTarget: target,
+          offset: -95
+        });
+	});
+
+	//services show/hide banner	
+	$(".services__banner").children().first().show();
+	$(".list-item").click(function() {
+		$idName = $(this).find(".ico").attr("id");
+		$(".services__banner img").fadeOut("slow").finish();
+		$(".services__banner").find("." + $idName).fadeIn("slow");
+	});
+	
 });

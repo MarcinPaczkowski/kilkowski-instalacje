@@ -7972,8 +7972,9 @@ button.close {
   text-align: center;
 }
 .services .list-item {
-  height: 55px;
+  height: 50px;
   margin-bottom: 15px;
+  cursor: pointer;
 }
 .services .list-item .ico {
   float: left;
@@ -7996,6 +7997,12 @@ button.close {
 .services .list-item .category .description {
   margin: 0;
   font-size: 16px;
+}
+.services .list-item:hover .category {
+  background-color: #eeeeee;
+}
+.services__banner img {
+  display: none;
 }
 .slider {
   margin-top: 20px;
@@ -8114,11 +8121,8 @@ button.close {
 }
 .trustUs .companyIco {
   width: 100%;
-  height: 75px;
-  background-image: url("http://lorempixel.com/150/75/");
-  background-repeat: no-repeat;
-  display: block;
-  margin-bottom: 20px;
+  height: 100%;
+  margin-bottom: 15px;
 }
 .trustUs .companyIco:hover {
   opacity: 0.7;

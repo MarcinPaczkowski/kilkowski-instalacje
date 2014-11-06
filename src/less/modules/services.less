@@ -24,8 +24,9 @@
 		}
 	}
 	.list-item {
-		height: 55px;
+		height: 50px;
 		margin-bottom: 15px;
+		cursor: pointer;
 		.ico {
 			float: left;
 			margin-right: 10px;
@@ -34,7 +35,7 @@
 			background-image: url("../images/circle5.png");
 			background-position-y: 3px;
 			background-size: 40px 40px;
-			background-repeat: no-repeat;
+			background-repeat: no-repeat;			
 		}
 		.category {
 			float: left;
@@ -47,6 +48,16 @@
 				margin: 0;
 				font-size: 16px;
 			}
+		}
+	}
+	.list-item:hover {
+		.category {
+		background-color: #eeeeee;
+		}
+	}
+	&__banner {
+		img {
+			display: none;
 		}
 	}
 }
