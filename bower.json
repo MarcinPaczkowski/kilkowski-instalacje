@@ -10,6 +10,6 @@
 	"dependencies": {
 		"jquery": ">= 1.9.0",
 		"components-font-awesome": "*",
-		"bootstrap": ">= 3.2.0"
+		"bootstrap": ">= 3.2.0",
 	}
 }

@@ -31,5 +31,8 @@ $(document).ready(function(){
 		$(".services__banner img").fadeOut("slow").finish();
 		$(".services__banner").find("." + $idName).fadeIn("slow");
 	});
+
+	//colorBox popUp
+	$(".gallery-item--popUp").colorbox({rel:'gallery-item--popUp'});
 	
 });
