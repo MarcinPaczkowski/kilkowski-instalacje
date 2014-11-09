@@ -7902,8 +7902,24 @@ button.close {
   text-decoration: none;
   color: #2491FF;
 }
+.offset {
+  position: relative;
+}
+.welcomePage {
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.welcomePage__background {
+  width: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-image: url('../images/sprzedawcaroku.jpg');
+}
 .banner {
-  margin-top: 100px;
+  padding-top: 20px;
 }
 .about {
   margin-top: 20px;
@@ -8133,6 +8149,10 @@ h3 {
   margin: 0;
   margin-top: 20px;
 }
+*:focus {
+  border: none;
+  outline: none;
+}
 .contact {
   margin-top: 20px;
   padding-top: 20px;
@@ -8178,9 +8198,14 @@ h3 {
   border: none;
   padding: 8px;
 }
-.contact__form .formToContact .singleInput input:focus {
+.contact__form .formToContact .singleInput textarea {
+  width: 100%;
+  max-width: 100%;
+  min-height: 180px;
+  background-color: #333333;
+  color: #dddddd;
   border: none;
-  outline: none;
+  padding: 8px;
 }
 footer {
   background-color: #444444;

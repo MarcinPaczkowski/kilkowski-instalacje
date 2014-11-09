@@ -21,7 +21,7 @@
         <section class="stickyNavigation">
             <nav class="navigation"> 
                 <div class="navigation__logo">
-                    <a href="#banner">
+                    <a href="#">
                         <img src="http://dummyimage.com/300x80/999999/000000.png&text=Ma%C5%82e+Logo+Firmy" class="img-responsive" alt="Kilkowski instalacje logo"/>
                     </a>
                 </div>
@@ -38,7 +38,14 @@
             </nav>
         </section>
 
-        <section class="banner" id="banner">
+        <section class="welcomePage">
+            <div class="welcomePage__background">
+                
+            </div>
+        </section>
+
+        <div class="offset">
+            <section class="banner">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -377,18 +384,23 @@
                             </div>
                             <form action="#" class="formToContact">
                                 <p class="singleInput">
-                                    <label>Imię i nazwisko/firma (wymagane)</label> 
+                                    <label for="name">Imię i nazwisko/firma (wymagane)</label> 
                                     <input type="name" name="name" placeholder="Podaj imię i nazwisko lub nazwę firmy" required>
                                 </p>
 
                                 <p class="singleInput">
-                                    <label>Adres E-mail (wymagane)</label> 
+                                    <label for="email">Adres E-mail (wymagane)</label> 
                                     <input type="email" name="email" placeholder="Podaj adres e-mail" required>
                                 </p>
 
                                 <p class="singleInput">
-                                    <label>Numer telefonu (wymagane)</label> 
+                                    <label for="phone">Numer telefonu (wymagane)</label> 
                                     <input type="phone" name="phone" placeholder="Podaj numer telefonu kontaktowego" required>
+                                </p>
+
+                                <p class="singleInput">
+                                    <label for="your-message">Treść wiadomości</label>
+                                    <textarea name="your-message" placeholder="Podaj treść wiadomości"></textarea>
                                 </p>
                                 
                                 <input type="submit" class="btn btn-info btn-large">
@@ -408,6 +420,7 @@
                 </div>
             </div>            
         </footer>
+        </div>        
     </div>       
         <script src="js/vendor/jquery.min.js"></script>
         <script src="js/vendor/bootstrap.min.js"></script>

@@ -2,6 +2,10 @@ h1, h2, h3 {
 	margin: 0;
 	margin-top: 20px;
 }
+*:focus {
+	border: none;
+	outline: none;
+}	
 .contact {
 	margin-top: 20px;
 	padding-top: 20px;
@@ -46,11 +50,17 @@ h1, h2, h3 {
 					color: #dddddd;
 					border: none;
 					padding: 8px;					
-				}
-				input:focus {
+				}	
+				textarea {
+					width: 100%;
+					max-width: 100%;
+					min-height: 180px;					
+					background-color: #333333;
+					color: #dddddd;
 					border: none;
-					outline: none;
-				}				
+					padding: 8px;
+				}
+
 			}
 		}	
 	}
