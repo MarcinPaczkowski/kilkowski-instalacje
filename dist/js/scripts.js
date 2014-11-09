@@ -5348,7 +5348,20 @@ if (typeof Object.create !== "function") {
 		$(".welcomePage__background").css("height", screenHeight);
 	});
 
-	console.log(screenHeight);
+	//RWD nav
+	if ($(window).width() <= 991) {
+		$(".navigation__menu .menu").wrap("<div class='hamburger'></div>");
+	}
+	$(window).resize(function() {
+		if ($(window).width() <= 991 && $(".hamburger").length < 0) {
+			$(".navigation__menu .menu").wrap("<div class='hamburger'></div>");
+		}
+	});
+
+	$(".hamburger").click(function() {
+		$(".hamburger .menu").slideToggle();
+	});
+
 	// slider carousel
 	$("#owl-mySlider").owlCarousel({ 
 		autoPlay: 3000,
