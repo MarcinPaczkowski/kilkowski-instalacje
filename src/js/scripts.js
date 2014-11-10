@@ -9,12 +9,21 @@ $(document).ready(function(){
 	});
 
 	//RWD nav
-	if ($(window).width() <= 991) {
+	if ($(window).width() <= 991 && $(".hamburger").length === 0) {
 		$(".navigation__menu .menu").wrap("<div class='hamburger'></div>");
 	}
 	$(window).resize(function() {
-		if ($(window).width() <= 991 && $(".hamburger").length < 0) {
+		if ($(window).width() <= 991 && $(".hamburger").length === 0) {					
 			$(".navigation__menu .menu").wrap("<div class='hamburger'></div>");
+			location.reload();
+		}
+
+		if ($(window).width() > 991 && $(".hamburger").length > 0) {
+			var clone = $(".hamburger .menu");
+			$(".hamburger").remove();
+			$(".navigation__menu").wrapInner(clone);
+			$(".navigation__menu .menu").css("display", "block");
+			location.reload();
 		}
 	});
 

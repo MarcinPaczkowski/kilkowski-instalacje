@@ -7975,8 +7975,8 @@ button.close {
 .about__header__additional {
   margin: 0;
   margin-top: 15px;
-  margin-left: 140px;
-  margin-right: 140px;
+  margin-left: 100px;
+  margin-right: 100px;
   font-size: 20px;
   text-align: center;
   line-height: 25px;
@@ -7997,6 +7997,12 @@ button.close {
   text-align: justify;
   line-height: 25px;
   color: #666;
+}
+@media screen and (max-width: 767px) {
+  .about__header__additional {
+    margin-right: 0;
+    margin-left: 0;
+  }
 }
 .services {
   margin-top: 20px;
@@ -8060,6 +8066,13 @@ button.close {
 .slider {
   margin-top: 20px;
 }
+a:active,
+a:hover,
+a:focus {
+  outline: none;
+  outline: 0;
+  outline-offset: 0;
+}
 .gallery {
   margin-top: 20px;
 }
@@ -8095,6 +8108,11 @@ button.close {
 }
 .gallery .gallery-item:hover {
   opacity: 1.0;
+}
+@media screen and (max-width: 767px) {
+  .gallery .gallery-item img {
+    width: 65%;
+  }
 }
 .offer {
   margin-top: 20px;
@@ -8179,16 +8197,6 @@ button.close {
 }
 .trustUs .companyIco:hover {
   opacity: 0.7;
-}
-h1,
-h2,
-h3 {
-  margin: 0;
-  margin-top: 20px;
-}
-*:focus {
-  border: none;
-  outline: none;
 }
 .contact {
   margin-top: 20px;
